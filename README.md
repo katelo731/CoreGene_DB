@@ -1,11 +1,8 @@
-## Main Direction :
+## Workflow :
 
-genomes -> BLASTp on Linux -> many BLASTp reports ( includes similarity, e-value, % overlapping ... to define "similar" )
-
-->
-
-get .txt from BLASTp -> store in MySQL -> new score ( based on BLAST report ) to summary in DB ( MCL paper ) 
--> get similar gene ( core gene candidate, use DEG to validate ) -> get core gene -> GUI webpage oriented to find core gene 
+genomes -> MMseqs2 on Linux -(transform)-> BLASTp output -> Separate Paralog & Ortholog -(now focus on ortholog)
+ -> delete row which evalue > 1e-5 -> set K as a constant to represent the threshold -> Cytoscape cluster graphs
+ -> decide # clusters -> ... -> store in DB -> GUI webpage oriented to find core gene
 
 ## Webpage Spec :
 
