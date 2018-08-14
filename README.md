@@ -1,4 +1,4 @@
-## FunCore : a User-Friendly Fungi Core Gene Database Website
+## *FunCore : a User-Friendly Fungi Core Gene Database Website*
 
 ## Workflow :
 
