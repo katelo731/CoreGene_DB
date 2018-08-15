@@ -4,6 +4,12 @@
 
 ~~genomes -> MMseqs2 on Linux -(transform)-> BLASTp output -> Separate Paralog & Ortholog -(now focus on Ortholog)-> delete row which evalue > 1e-5 -> reformat data (table with ID1, ID2, weighted) ->~~ set K(evalue) as a constant to represent the threshold -> **Cluster algo & get representitve protein from each cluster** -> Cytoscape graphs -> decide clusters # -> ... -> store in DB -> GUI webpage
 
+## Shortest Path Algorithm :
+
+1. ~~Dijkstra Algorithm~~ (done)
+
+2. A* Algorithm
+
 ## Cluster :
 
 
