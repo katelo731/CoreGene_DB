@@ -1,27 +1,27 @@
 #include <bits/stdc++.h>
 #include <fstream>
-#define MAXV 100000
+#define MAXV 1000000
 using namespace std;
 
 struct Node{
-        int node;
-        int weight;
-        Node *next;
+    int node;
+    int weight;
+    Node *next;
         
-        Node(int node, int weight){
-		    this->node = node;
-		    this->weight = weight;
-		    this->next = NULL;
-		}
+    Node(int node, int weight){
+	this->node = node;
+	this->weight = weight;
+	this->next = NULL;
+    }
 };
 
 class Graph{
     bool directed;
-    public:
-        Node *edges[MAXV + 1];
-		Graph(bool directed);
-        void insert_edge(int x, int y, int weight, bool directed);
-        //void print();
+  public:
+    Node *edges[MAXV + 1];
+    Graph(bool directed);
+    void insert_edge(int x, int y, int weight, bool directed);
+    //void print();
 };
 
 Graph::Graph(bool directed){
@@ -65,7 +65,7 @@ void dijkstra_shortest_path(Graph *g, int parent[], int distance[], int start){
     int weight;
     int smallest_dist;
 	
-	// initialize
+    // initialize
     for(int i = 1; i < (MAXV + 1); i ++){
         discovered[i] = false;
         distance[i] = std::numeric_limits<int>::max();
@@ -95,8 +95,8 @@ void dijkstra_shortest_path(Graph *g, int parent[], int distance[], int start){
         smallest_dist = std::numeric_limits<int>::max();
         for(int i = 1; i < (MAXV + 1); i ++)
             if(!discovered[i] && (distance[i] < smallest_dist)){
-                v_curr = i;
-                smallest_dist = distance[i];
+	        v_curr = i;
+	        smallest_dist = distance[i];
             }
     }
 }
@@ -129,8 +129,8 @@ int main(){
     g->insert_edge(3, 2, 1, directed);
     g->insert_edge(3, 4, 5, directed);
     g->insert_edge(2, 4, 3, directed);
-	g->insert_edge(2, 5, 1, directed);
-	g->insert_edge(4, 5, 2, directed);
+    g->insert_edge(2, 5, 1, directed);
+    g->insert_edge(4, 5, 2, directed);
     g->insert_edge(4, 6, 2, directed);
 
     dijkstra_shortest_path(g, parent, distance, start);
