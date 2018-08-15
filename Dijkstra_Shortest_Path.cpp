@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 #include <fstream>
-#define MAXV 1000000
+#define MAXV 100000
 using namespace std;
 
 struct Node{
@@ -110,34 +110,29 @@ void print_shortest_path(int v, int parent[]){
 }
 */
 
-void print_distances(int start, int distance[]){
-    for(int i = 1; i < (MAXV + 1); i ++)
-        if(distance[i] != std::numeric_limits<int>::max())
-            cout << "Shortest distance from " << start << " to " << i << " is: " << distance[i] << endl;
-}
-
 int main(){
 
     Graph *g = new Graph(false);
     int parent[MAXV + 1];
     int distance[MAXV + 1];
     int start = 1;
-    bool directed = false;
-
-    g->insert_edge(1, 2, 4, directed);
-    g->insert_edge(1, 3, 1, directed);
-    g->insert_edge(3, 2, 1, directed);
-    g->insert_edge(3, 4, 5, directed);
-    g->insert_edge(2, 4, 3, directed);
-    g->insert_edge(2, 5, 1, directed);
-    g->insert_edge(4, 5, 2, directed);
-    g->insert_edge(4, 6, 2, directed);
+    
+    ifstream in("dijkstra_test.txt");
+    ofstream out("dijkstra_out.txt");
+    int id1, id2, weight;
+	
+    while(in >> id1 >> id2 >> weight)
+    {
+	g->insert_edge(id1, id2, weight, false);
+    }
 
     dijkstra_shortest_path(g, parent, distance, start);
     
     //print_shortest_path(6, parent);
-    //cout << endl;
-    print_distances(start, distance);
+    
+    for(int i = 1; i < (MAXV + 1); i ++)
+        if(distance[i] != std::numeric_limits<int>::max())
+            out << start << '\t' << i << '\t' << distance[i] << endl;
 
     delete g;
     return 0;
