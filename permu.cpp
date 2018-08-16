@@ -4,7 +4,7 @@
 #include <fstream>
 using namespace std;
 int main(){
-	ifstream in("IDevalue");
+    ifstream in("IDevalue");
     ofstream out("IDevalue_permu.out");
     string inputStr1, inputStr2;
     int evalue;
