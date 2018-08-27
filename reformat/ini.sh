@@ -30,7 +30,14 @@ cat IDevalue_unique | awk {'print $2 "\t" $3 "\t" $1'} > permu_sort2
 # sort by evalue
 sort -k 3rn permu_sort2 > finalresult
 
+##### transform node ID (string) to node ID (number)
 
+# delete col 3 (weight)
+cat 5mul5final | awk {'print $1 "\t" $2'} > 5mul5final_delweit
 
+# append col 2 to col 1
+xargs -n1 < 5mul5final_delweit > 5mul5final_append
 
+# sort and uniq
+...
 
