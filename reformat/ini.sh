@@ -41,5 +41,15 @@ xargs -n1 < 5mul5final_delweit > 5mul5final_append
 # sort and uniq
 sort -uo 5mul5final_sort 5mul5final_append
 
-# add flow number
-...
+# add flow number (!)
+
+tmp=$(wc -l < 5mul5final_sort)
+for ((i=0; i<$tmp; i++))
+do 
+    cat 5mul5final_sort | awk {'print $1 "\t" $i'} > 5mul5final_num
+done
+
+
+
+
+
