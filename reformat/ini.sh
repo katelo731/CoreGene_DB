@@ -39,5 +39,7 @@ cat 5mul5final | awk {'print $1 "\t" $2'} > 5mul5final_delweit
 xargs -n1 < 5mul5final_delweit > 5mul5final_append
 
 # sort and uniq
-...
+sort -uo 5mul5final_sort 5mul5final_append
 
+# add flow number
+...
