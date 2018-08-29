@@ -48,7 +48,6 @@ awk -F "\t" '{$1=i++ FS $1;}1' OFS="\t" finalresult_sort > finalresult_ID
 g++ noderep.cpp -o noderep.out
 ./noderep.out
 
-# ..
 
 
 
