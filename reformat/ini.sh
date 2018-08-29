@@ -33,22 +33,22 @@ sort -k 3rn permu_sort2 > finalresult
 ##### transform node ID (string) to node ID (number)
 
 # delete col 3 (weight)
-cat 5mul5final | awk {'print $1 "\t" $2'} > 5mul5final_delweit
+cat finalresult | awk {'print $1 "\t" $2'} > finalresult_delweit
 
 # append col 2 to col 1
-xargs -n1 < 5mul5final_delweit > 5mul5final_append
+xargs -n1 < finalresult_delweit > finalresult_append
 
 # sort and uniq
-sort -uo 5mul5final_sort 5mul5final_append
+sort -uo finalresult_sort finalresult_append
 
-# add flow number (!)
+# add flow number to col 1 ( starting from 0 )
+awk -F "\t" '{$1=i++ FS $1;}1' OFS="\t" finalresult_sort > finalresult_ID
 
-tmp=$(wc -l < 5mul5final_sort)
-for ((i=0; i<$tmp; i++))
-do 
-    cat 5mul5final_sort | awk {'print $1 "\t" $i'} > 5mul5final_num
-done
+# replace node ID
+g++ noderep.cpp -o noderep.out
+./noderep.out
 
+# ..
 
 
 
