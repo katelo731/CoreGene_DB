@@ -33,10 +33,11 @@ sort -k 3rn permu_sort2 > finalresult
 ##### transform node ID (string) to node ID (number)
 
 # delete col 3 (weight)
-cat finalresult | awk {'print $1 "\t" $2'} > finalresult_delweit
+cat finalresult | awk {'print $1'} > finalresult_delweit1
+cat finalresult | awk {'print $2'} > finalresult_delweit2
 
 # append col 2 to col 1
-xargs -n1 < finalresult_delweit > finalresult_append
+cat finalresult_delweit1 finalresult_delweit2 > finalresult_append
 
 # sort and uniq
 sort -uo finalresult_sort finalresult_append
